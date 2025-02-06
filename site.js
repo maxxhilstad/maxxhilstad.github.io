@@ -13,3 +13,6 @@ if (isMorning === true) {
 } else {
     welcomeMessage.textContent = 'Good Evening!'
 }
+
+
+localStorage.setItem("It's a secret to everybody.", "It's dangerous to go alone! Take this.")
