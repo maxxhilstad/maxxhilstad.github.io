@@ -56,3 +56,52 @@ prev.addEventListener('click', () => {
     currentImage--
     showImages()
 })
+
+
+// ASSIGNMENT 6 - TODO LIST
+
+
+// Create function that creates and adds list items to DOM (renderTodos). Call it when the page loads. Call it again when the user adds an item.
+
+// Use array method to loop through list of items. Don't use FOR loop
+
+// When user adds an item to the list, it should be added to local storage. After it's added, call renderTodos
+
+
+const todoButton = document.querySelector('#addTodo') // selects button
+const todoInput = document.querySelector('#new-todo') // selects input
+const todoList = document.querySelector('.todo-list') // selects ul
+
+// Get the list from local storage
+const todos = JSON.parse(localStorage.getItem('todo-list')) || []
+
+const renderTodos = () => {
+    // Create and add new list items to the DOM
+    const li = document.createElement('li')
+    li.textContent = todoInput.text
+    todoList.append(li)
+}
+
+const createList = todos.forEach(todo => {
+
+    const { text, completed } = todo
+
+    li.innerHTML = `<span>${text}${completed}</span>`
+
+    renderTodos()
+})
+
+renderTodos()
+
+todoButton.addEventListener('click', () => {
+    // Clear the li's before we recreate them
+    todoList.innerHTML = ''
+
+    // Add a new item to the list
+    todos.push({ text: todoInput.value, completed: false })
+
+    // Save the list to local storage
+    localStorage.setItem('todo-list', JSON.stringify(todos))
+
+    createList()
+})
