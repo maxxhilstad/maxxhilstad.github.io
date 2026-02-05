@@ -1,27 +1,43 @@
+
+import { useState, useEffect } from 'react'
+
 import Header from "./components/header.jsx"
 import Nav from "./components/Nav.jsx"
 import Footer from "./components/Footer.jsx"
 import StarRating from "./components/StarRating.jsx"
 
-// const favMovies = [
-//   'Interstellar',
-//   'No Country for Old Men',
-//   'Hateful Eight'
-// ]
-
-const favBooks = [
-  {title:'1984', initialRating: 5},
-  {title:'Maze Runner', initialRating: 3},
-  {title:'Hunger Games', initialRating: 1}
-]
-
-// const hobbies = [
-//   'Gaming',
-//   'Coding',
-//   'Magic: The Gathering'
-// ]
-
 const App = () =>{
+
+  const [ books, setBooks ] = useState([])
+  const [ isLoading, setIsLoading ] = useState(true)
+  const [ error, setError ] = useState(null)
+
+  useEffect(() => {
+    (async () => {
+      try {
+      const url = './data/books.json'
+      const response = await fetch(url)
+      if (!response.ok) throw new Error('Failed to fetch books.')
+      const data = await response.json()
+      setBooks(data)
+      }
+      catch (err) {
+        setError(err.message)
+      }
+      finally {
+        setIsLoading(false)
+      }
+
+    })()
+  }, [])
+
+  useEffect(() => {
+    if (!isLoading) document.title = 'Favorite Books'
+  }, [ isLoading ])
+
+  if (isLoading) return <div>Loading books...</div>
+  if (error) return <div>Error: {error}</div>
+
 
   return (
     <>
@@ -44,18 +60,12 @@ const App = () =>{
           </p>
         </section>
         <section>
-          {/* <h2>Favorite Movies</h2>
-          <ul>
-            {favMovies.map((movie, index) => <li key = { index }>{ movie }</li>)}
-          </ul> */}
           <h2>Favorite Books</h2>
-          <ul>
-            {favBooks.map((book, index) => <li key = { index }>{ book.title }<StarRating initialRating = {book.initialRating}/></li>)}
-          </ul>
-          {/* <h2>Hobbies</h2>
-          <ul>
-            {hobbies.map((hobby, index) => <li key = { index }>{ hobby }</li>)}
-          </ul> */}
+
+          {books.map(book => (
+            <li key={book.id}>{book.title} ({book.genre} | {book.pages} pages) - {book.author}<StarRating initialRating={book.rating}/></li>
+          ))}
+
         </section>
       </main>
       <Footer />

@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "1984",
+        "pages": 328,
+        "genre": "Dystopian Fiction",
+        "author": "George Orwell",
+        "rating": 0
+    },
+    {
+        "id": 2,
+        "title": "Maze Runner",
+        "pages": 375,
+        "genre": "Action/Sci-Fi",
+        "author": "James Dashner",
+        "rating": 0
+    },
+    {
+        "id": 3,
+        "title": "Hunger Games",
+        "pages": 374,
+        "genre": "Thriller",
+        "author": "Suzanne Collins",
+        "rating": 0
+    }
+]
