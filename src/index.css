@@ -10,13 +10,21 @@
     background-color: var(--lightgrey);
 }
 
-main,
+nav a { color: inherit; }
+
+h2 { margin-top: 0;}
+
+.setWidth,
 header h1,
 header p,
 nav div,
 footer p {
     width: 80%;
     margin: auto;
+}
+
+.setWidth {
+    padding: 10px;
 }
 
 div#wrapper,
@@ -35,10 +43,10 @@ nav {
     margin-top: 20px;
 }
 
-header h1,
+/* header h1,
 header p {
     color: var(--turquoise);
-}
+} */
 
 nav ul {
     display: flex;
@@ -57,15 +65,15 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: white;
+    /* color: white; */
 }
 
 footer {
     padding: 20px;
 }
 
-footer p {
+/* footer p {
     color: var(--turquoise);
-}
+} */
 
 .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}

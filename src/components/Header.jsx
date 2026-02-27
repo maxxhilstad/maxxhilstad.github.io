@@ -1,8 +1,5 @@
-const headerStyle = {
-    backgroundColor: 'var(--darkblue)'
-}
 
-const Header = ({ name, tagLine, children }) => {
+const Header = ({ name, tagLine, children, headerStyle }) => {
     return (
         <>
             <header style = { headerStyle }>

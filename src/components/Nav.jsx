@@ -1,8 +1,5 @@
-const navStyle = {
-    backgroundColor: 'var(--lightblue)'
-}
 
-const Nav = () => {
+const Nav = ({ navStyle }) => {
     return (
         <>
             <nav style = { navStyle } className = "full-width-bg">

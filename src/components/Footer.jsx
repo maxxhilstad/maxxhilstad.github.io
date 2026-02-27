@@ -1,8 +1,5 @@
-const footerStyle = {
-    backgroundColor: 'var(--darkblue)'
-}
 
-const Footer = () => {
+const Footer = ({ footerStyle }) => {
     return (
         <>
             <footer style = { footerStyle } className = "full-width-bg">
