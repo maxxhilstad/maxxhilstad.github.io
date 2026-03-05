@@ -1,8 +1,7 @@
 
-import { useState, useEffect } from 'react'
-
+import { useState, useEffect, useContext } from 'react'
+import { ThemeContext } from './contexts/ThemeContext'
 import { headerLightStyle, headerDarkStyle, navLightStyle, navDarkStyle, mainLightStyle, mainDarkStyle, footerLightStyle, footerDarkStyle } from './ThemeStyles'
-
 import Header from "./components/header"
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
@@ -15,7 +14,8 @@ const App = () =>{
   const [ isLoading, setIsLoading ] = useState(true)
   const [ error, setError ] = useState(null)
 
-  const [ theme, setTheme ] = useState('Light')
+  const { theme } = useContext(ThemeContext)
+
 
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const App = () =>{
           ))}
 
         </section>
-        <ThemeToggle theme={theme} setTheme={setTheme}/>
+        <ThemeToggle/>
         </div>
       </main>
       <Footer footerStyle={theme == 'Light' ? footerLightStyle : footerDarkStyle}/>
