@@ -10,8 +10,9 @@ import Nav from "./components/Nav"
 import Footer from "./components/Footer"
 import ThemeToggle from "./components/ThemeToggle"
 import Sections from "./components/Sections"
+import ApiCall from './components/ApiCall'
 
-const App = () =>{
+const App = () => {
 
   const { theme } = useContext(ThemeContext)
 
@@ -32,6 +33,10 @@ const App = () =>{
 
           <Sections/>
           <ThemeToggle/>
+
+          <hr/>
+
+          <ApiCall/>
         </div>
       </main>
       <Footer footerStyle={theme == 'Light' ? footerLightStyle : footerDarkStyle}/>
