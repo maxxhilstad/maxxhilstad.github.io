@@ -20,7 +20,7 @@ const ApiCall = () => {
     }
 
     const handleRandomPokemon = () => {
-        const randomPokemon = Math.floor(Math.random() * 1025) + 1
+        const randomPokemon = Math.floor(Math.random() * 1350) + 1
         setPokemon(String(randomPokemon))
     }
 
