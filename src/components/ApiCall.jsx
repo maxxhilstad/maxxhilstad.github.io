@@ -1,12 +1,12 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import useFetch from '../hooks/useFetch'
 
 import Card from './Card'
 
 const ApiCall = () => {
 
-    const [ pokemon, setPokemon ] = useState('dugtrio')
+    const [ pokemon, setPokemon ] = useState('cyndaquil')
     const [ inputValue, setInputValue ] = useState('')
 
     const url = pokemon
@@ -15,25 +15,41 @@ const ApiCall = () => {
 
     const { data, loading, error } = useFetch(url)
 
+    const handleSubmit = () => {
+        if (inputValue != '') setPokemon(inputValue.trim())
+    }
+
+    const handleRandomPokemon = () => {
+        const randomPokemon = Math.floor(Math.random() * 1025) + 1
+        setPokemon(String(randomPokemon))
+    }
+
     return (
         <div>
             <h2>Search Pokemon</h2>
             <input 
                 type='text'
                 value={inputValue}
-                onChange={e => {
-                    const value = e.target.value
-                    setInputValue(value)
-                    setPokemon(value)
+                onChange={e => setInputValue(e.target.value)}
+                onKeyDown={e => {
+                    if (e.key === 'Enter') {
+                        handleSubmit()
+                    }
                 }}
                 placeholder='Enter a Pokemon'
             />
+            <button
+                onClick={handleSubmit}
+            >Search</button>
+            <button
+                onClick={handleRandomPokemon}
+            >Random</button>
             <hr/>
             {data && (
                 <Card data={data}/>
-            ) || <p>No Pokemon Found</p>}
-            { error && '' }
-            {loading && 'Loading Pokemon info'}
+            ) ||
+            error && <><h2>Not Found :(</h2></> ||
+            loading && <><h2>Loading Pokemon . . .</h2></>}
             <hr/>
         </div>
     )

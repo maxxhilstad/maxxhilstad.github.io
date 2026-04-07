@@ -9,11 +9,14 @@ const useFetch = url => {
     useEffect(() => {
         (async () => {
             setLoading(true)
+            setError(null)
+
             try {
             const response = await fetch(url)
 
             if (!response.ok) {
                 setError(`Error: ${response.status}`)
+                setData(null)
                 return
             }
 
