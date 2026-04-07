@@ -1,17 +1,13 @@
 
-const Nav = ({ navStyle }) => {
+import { NavLink } from 'react-router-dom'
+
+const Nav = ({navStyle}) => {
+
     return (
-        <>
-            <nav style = { navStyle } className = "full-width-bg">
-            <div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            </div>
-            </nav>
-        </>
+        <nav style={navStyle} className = "full-width-bg">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/pokemon">Pokemon</NavLink>
+        </nav>
     )
 }
 
